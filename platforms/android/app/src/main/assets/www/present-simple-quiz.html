@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Present Simple – Quiz</title>
+<style>
+  :root {
+    --bg: #0a192f;
+    --panel: #112240;
+    --accent: #64ffda;
+    --text: #ccd6f6;
+    --muted: #8892b0;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  header {
+    text-align: center;
+    padding: 2rem;
+    background: var(--panel);
+    color: var(--accent);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+  }
+  .card {
+    background: var(--panel);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1rem auto;
+    width: 100%;
+    max-width: 700px;
+    text-align: left;
+    box-shadow: 0 0 10px rgba(100,255,218,0.1);
+  }
+  .badge {
+    background: var(--accent);
+    color: var(--bg);
+    padding: 0.2rem 0.6rem;
+    border-radius: 5px;
+    margin-right: 0.5rem;
+  }
+  label.option {
+    background: #233554;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  label.option:hover {
+    background: #2f456b;
+    transform: translateX(5px);
+  }
+  label.option.correct {
+    background: #154c3b;
+    border: 1px solid var(--accent);
+  }
+  .controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .explanation {
+    display: none;
+    margin-top: 1rem;
+    padding: 0.8rem;
+    border-radius: 8px;
+  }
+  .explanation.good {
+    background: rgba(100, 255, 218, 0.1);
+    border-left: 4px solid var(--accent);
+  }
+  .explanation.bad {
+    background: rgba(255, 99, 71, 0.1);
+    border-left: 4px solid tomato;
+  }
+  button {
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  button:hover {
+    background: #52e0c4;
+    transform: translateY(-2px);
+  }
+  button.secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+  }
+  button.secondary:hover {
+    background: #233554;
+  }
+  .global, .nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .nav-links a {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--bg);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.8rem 1.6rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(100,255,218,0.5);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  .nav-links a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(100,255,218,0.9);
+  }
+
+  /* 🔹 Botón "Next Topic" */
+  #nextLesson {
+    display: none;
+    margin: 2rem auto;
+    padding: 1rem 2rem;
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(100,255,218,0.5);
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  #nextLesson:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(100,255,218,0.8);
+  }
+
+  footer {
+    background: var(--panel);
+    color: var(--muted);
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Present Simple – Quiz</h1>
+  <p class="muted">Marca la opción correcta y pulsa <b>Comprobar</b>. Si aciertas todas, podrás continuar con el siguiente tema.</p>
+</header>
+
+<div class="nav-links">
+  <a href="present-simple.html">← Volver atrás</a>
+  <a href="index.html">🏠 Ir al índice</a>
+</div>
+
+<main id="app"></main>
+
+<div class="global">
+  <button id="checkAll">Comprobar todo</button>
+  <button class="secondary" id="resetAll">Reset</button>
+</div>
+
+<!-- 🔹 Botón oculto que aparece al acertar todo -->
+<a id="nextLesson" href="present-continuous.html">→ Next Topic: Present Continuous</a>
+
+
+
+<footer>
+  <p class="muted">© 2025 Present Simple Practice</p>
+</footer>
+
+<script>
+const questions = [
+  {text:"My brother ____ football every weekend.",options:["play","plays","is play"],correct:[1],why:"En 3ª persona singular (he/she/it) añadimos -s: ‘plays’."},
+  {text:"She ____ coffee.",options:["don’t like","doesn’t like","not likes"],correct:[1],why:"Negación en 3ª persona: ‘doesn’t + verbo base’."},
+  {text:"What time ____ you ____ on weekdays?",options:["do / get up","does / get up","do / gets up"],correct:[0],why:"Con ‘you’ usamos ‘do’ y el verbo base ‘get up’."},
+  {text:"The museum ____ at ten o’clock.",options:["open","opens","is open"],correct:[1],why:"Acción habitual en 3ª persona (it): ‘opens’."},
+  {text:"My parents ____ near the city centre.",options:["lives","live","are live"],correct:[1],why:"Plural → verbo sin -s: ‘live’."},
+  {text:"Water ____ at 100°C.",options:["boil","boils","is boiling"],correct:[1],why:"Hecho general → ‘boils’."},
+  {text:"He always ____ his keys.",options:["forget","forgets","is forgetting"],correct:[1],why:"3ª persona → ‘forgets’."},
+  {text:"Where ____ your sister ____?",options:["do / works","does / work","does / works"],correct:[1],why:"‘Does’ con 3ª persona, verbo base: ‘work’."},
+  {text:"They ____ new clothes every Saturday.",options:["buy","buys","are buying"],correct:[0],why:"Con ‘they’ el verbo no lleva -s: ‘buy’."},
+  {text:"The sun ____ in the east.",options:["rise","rises","is rising"],correct:[1],why:"Verdad universal → ‘rises’."},
+];
+
+const app = document.getElementById('app');
+const nextLesson = document.getElementById('nextLesson');
+
+function render(){
+  app.innerHTML = "";
+  questions.forEach((q, idx) => {
+    const card = document.createElement('article');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="q-header"><span class="badge">Q${idx+1}</span> ${q.text}</div>
+      <div class="options">
+        ${q.options.map((opt,i)=>`
+          <label class="option">
+            <input type="checkbox" data-q="${idx}" data-i="${i}" />
+            <span>${opt}</span>
+          </label>
+        `).join('')}
+      </div>
+      <div class="controls">
+        <button class="check-one" data-q="${idx}">Comprobar</button>
+        <button class="secondary clear-one" data-q="${idx}">Limpiar</button>
+      </div>
+      <div class="explanation" id="exp-${idx}"></div>
+    `;
+    app.appendChild(card);
+  });
+}
+render();
+
+function getSelected(qIndex){
+  return Array.from(document.querySelectorAll(`input[type="checkbox"][data-q="${qIndex}"]`))
+          .map((el, i) => ({i,checked:el.checked}));
+}
+function sameSet(a,b){
+  if(a.length !== b.length) return false;
+  const sa = new Set(a), sb = new Set(b);
+  for(const x of sa) if(!sb.has(x)) return false;
+  return true;
+}
+function explain(qIndex, ok){
+  const exp = document.getElementById(`exp-${qIndex}`);
+  exp.style.display = 'block';
+  exp.className = 'explanation ' + (ok ? 'good' : 'bad');
+  exp.innerHTML = ok
+    ? `<b>✅ ¡Correcto!</b> ${questions[qIndex].why}`
+    : `<b>❌ ¡Incorrecto!</b> Sigue intentando.`;
+}
+function checkOne(qIndex){
+  const selected = getSelected(qIndex).filter(x=>x.checked).map(x=>x.i);
+  const correct = questions[qIndex].correct;
+  const ok = sameSet(selected, correct);
+  const labels = Array.from(document.querySelectorAll(`input[data-q="${qIndex}"]`))
+    .map(i=>i.closest('label'));
+  labels.forEach(l=>l.classList.remove('correct'));
+  if(ok) correct.forEach(i=>labels[i]?.classList.add('correct'));
+  explain(qIndex, ok);
+  checkAllCorrect();
+}
+function clearOne(qIndex){
+  document.querySelectorAll(`input[data-q="${qIndex}"]`).forEach(el=>el.checked=false);
+  const exp = document.getElementById(`exp-${qIndex}`);
+  exp.style.display='none'; exp.className='explanation'; exp.innerHTML='';
+  document.querySelectorAll(`input[data-q="${qIndex}"]`).forEach(el=>el.closest('label').classList.remove('correct'));
+  nextLesson.style.display = "none";
+}
+function checkAll(){ questions.forEach((_,i)=>checkOne(i)); }
+function resetAll(){ questions.forEach((_,i)=>clearOne(i)); window.scrollTo({top:0, behavior:'smooth'}); nextLesson.style.display="none"; }
+
+// 🔹 Mostrar botón “Next Topic” cuando todas estén correctas
+function checkAllCorrect(){
+  const allGood = questions.every((_,i)=>{
+    const exp = document.getElementById(`exp-${i}`);
+    return exp.classList.contains('good');
+  });
+  if(allGood){
+    nextLesson.style.display = "inline-block";
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  }
+}
+
+// 🔹 Solo permitir una selección por pregunta
+document.addEventListener('change', e=>{
+  if(e.target.matches('input[type="checkbox"]')){
+    const qIndex = e.target.dataset.q;
+    document.querySelectorAll(`input[type="checkbox"][data-q="${qIndex}"]`).forEach(chk=>{
+      if(chk !== e.target) chk.checked = false;
+    });
+  }
+});
+document.addEventListener('click', e=>{
+  const btn = e.target.closest('button');
+  if(!btn) return;
+  if(btn.id==='checkAll') return checkAll();
+  if(btn.id==='resetAll') return resetAll();
+  if(btn.classList.contains('check-one')) return checkOne(+btn.dataset.q);
+  if(btn.classList.contains('clear-one')) return clearOne(+btn.dataset.q);
+});
+</script>
+</body>
+</html>
