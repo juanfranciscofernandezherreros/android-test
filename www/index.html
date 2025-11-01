@@ -3,49 +3,127 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Hello Cordova</title>
+  <title>Índice Educativo - Grammar & Vocabulary</title>
   <style>
     body {
       background: #0a192f;
-      color: #64ffda;
+      color: #ccd6f6;
       font-family: 'Segoe UI', system-ui, sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+      background: #112240;
+      color: #64ffda;
     }
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      font-size: 2.2rem;
+      margin-bottom: 0.3rem;
     }
-    button {
-      background: #64ffda;
-      border: none;
-      padding: 0.8em 1.2em;
-      border-radius: 10px;
-      cursor: pointer;
+    h2 {
+      color: #64ffda;
+      border-bottom: 2px solid #64ffda;
+      padding-bottom: 0.3rem;
+      margin-top: 2rem;
+    }
+    section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      background: #112240;
+      margin: 0.4rem 0;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      transition: transform 0.2s ease, background 0.3s ease;
+    }
+    li:hover {
+      background: #233554;
+      transform: translateX(5px);
+    }
+    .unit {
+      color: #64ffda;
       font-weight: bold;
-      color: #0a192f;
     }
-    button:hover {
-      background: #52e0c4;
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #112240;
+      color: #8892b0;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-  <h1>Hello Cordova 👋</h1>
-  <button onclick="showMsg()">Pulsa aquí</button>
+  <header>
+    <h1>📘 Índice del Libro</h1>
+    <p>Secciones de Gramática y Vocabulario</p>
+  </header>
 
-  <script>
-    document.addEventListener('deviceready', () => {
-      console.log('Cordova está listo');
-    }, false);
+  <section>
+    <h2>🧩 Grammar Section</h2>
+    <ul>
+      <li><span class="unit">Unit 1:</span> Present tenses</li>
+      <li><span class="unit">Unit 2:</span> Past tenses</li>
+      <li><span class="unit">Unit 3:</span> Present perfect and past simple</li>
+      <li><span class="unit">Unit 4:</span> Past perfect</li>
+      <li><span class="unit">Unit 5:</span> Future (1)</li>
+      <li><span class="unit">Unit 6:</span> Future (2)</li>
+      <li><span class="unit">Unit 7:</span> Adverbs</li>
+      <li><span class="unit">Unit 8:</span> Questions</li>
+      <li><span class="unit">Unit 9:</span> Countable and uncountable nouns; articles</li>
+      <li><span class="unit">Unit 10:</span> Modals (1)</li>
+      <li><span class="unit">Unit 11:</span> Modals (2)</li>
+      <li><span class="unit">Unit 12:</span> Pronouns and determiners</li>
+      <li><span class="unit">Unit 13:</span> Passives</li>
+      <li><span class="unit">Unit 14:</span> Reported speech</li>
+      <li><span class="unit">Unit 15:</span> The passive</li>
+      <li><span class="unit">Unit 16:</span> Conditionals (1)</li>
+      <li><span class="unit">Unit 17:</span> Conditionals (2)</li>
+      <li><span class="unit">Unit 18:</span> The infinitive and –ing</li>
+      <li><span class="unit">Unit 19:</span> (Duplicado en el libro)</li>
+      <li><span class="unit">Unit 20:</span> Prepositions (1)</li>
+      <li><span class="unit">Unit 21:</span> Prepositions (2)</li>
+      <li><span class="unit">Unit 22:</span> Relative clauses</li>
+      <li><span class="unit">Unit 23:</span> Linking words (1)</li>
+      <li><span class="unit">Unit 24:</span> Linking words (2)</li>
+    </ul>
 
-    function showMsg() {
-      alert('¡Hola desde tu app Cordova!');
-    }
-  </script>
+    <h2>🗣️ Vocabulary Section</h2>
+    <ul>
+      <li><span class="unit">Unit 25:</span> Learning and revising vocabulary</li>
+      <li><span class="unit">Unit 26:</span> Living a healthy life</li>
+      <li><span class="unit">Unit 27:</span> Sound waves</li>
+      <li><span class="unit">Unit 28:</span> Looking back</li>
+      <li><span class="unit">Unit 29:</span> Get active!</li>
+      <li><span class="unit">Unit 30:</span> All the world’s a stage</li>
+      <li><span class="unit">Unit 31:</span> Time off</li>
+      <li><span class="unit">Unit 32:</span> Moving house</li>
+      <li><span class="unit">Unit 33:</span> Shared tastes</li>
+      <li><span class="unit">Unit 34:</span> Home territory</li>
+      <li><span class="unit">Unit 35:</span> Green planet</li>
+      <li><span class="unit">Unit 36:</span> Read all about it!</li>
+      <li><span class="unit">Unit 37:</span> Teenage style</li>
+      <li><span class="unit">Unit 38:</span> School days</li>
+      <li><span class="unit">Unit 39:</span> The world of work</li>
+      <li><span class="unit">Unit 40:</span> University life</li>
+      <li><span class="unit">Unit 41:</span> Teenage style (repetida)</li>
+      <li><span class="unit">Unit 42:</span> School days</li>
+      <li><span class="unit">Unit 43:</span> The world of work</li>
+      <li><span class="unit">Unit 44:</span> University life</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2025 Índice educativo - Inglés Grammar & Vocabulary</p>
+  </footer>
 </body>
 </html>
