@@ -1,293 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Índice Educativo - Grammar & Vocabulary</title>
-  <style>
-    body {
-      background: #0a192f;
-      color: #ccd6f6;
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      text-align: center;
-      padding: 2rem;
-      background: #112240;
-      color: #64ffda;
-    }
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 0.3rem;
-    }
-    h2 {
-      color: #64ffda;
-      border-bottom: 2px solid #64ffda;
-      padding-bottom: 0.3rem;
-      margin-top: 2rem;
-    }
-    section {
-      max-width: 850px;
-      margin: 0 auto;
-      padding: 2rem;
-      line-height: 1.6;
-    }
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    li {
-      background: #112240;
-      margin: 0.4rem 0;
-      padding: 0.6rem 1rem;
-      border-radius: 8px;
-      transition: transform 0.2s ease, background 0.3s ease;
-    }
-    li:hover {
-      background: #233554;
-      transform: translateX(5px);
-    }
-    .unit {
-      color: #64ffda;
-      font-weight: bold;
-    }
-    a {
-      color: #64ffda;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #112240;
-      color: #8892b0;
-      font-size: 0.9rem;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>🎯 Ruta de Aprendizaje - Grammar & Vocabulary</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>📘 Índice del Libro</h1>
-    <p>Secciones de Gramática y Vocabulario</p>
+    <h1>🎯 Ruta de Aprendizaje</h1>
+    <p>Avanza paso a paso por Gramática y Vocabulario</p>
   </header>
 
-  <section>
-    <h2>🧩 Grammar Section</h2>
-    <ul>
-      <li><span class="unit">Unit 1:</span> Present tenses
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/present-simple.html">→ Present Simple</a></li>
-          <li><a href="grammar/present-continuous.html">→ Present Continuous</a></li>
-          <li><a href="grammar/state-verbs.html">→ State Verbs</a></li>
-          <li><a href="grammar/adverbs-of-frequency.html">→ Adverbs of Frequency</a></li>
-        </ul>
+  <main>
+    <section id="progress-section">
+      <p id="progress-text">Progreso: 0%</p>
+      <div id="progress-bar">
+        <div id="progress-fill"></div>
+      </div>
+      <button id="reset" class="btn secondary">Reiniciar progreso</button>
+    </section>
+
+    <h2>🧩 Grammar Path</h2>
+
+    <ul class="units" id="learning-path">
+      <!-- UNIT 1 -->
+      <li data-unit="1" class="unit-block">
+        <details open>
+          <summary>
+            <span class="chip">Unit 1:</span> <strong>Present Tenses</strong>
+          </summary>
+          <ul class="sublist">
+            <li data-sub="1.1">
+              <span>→ Present Simple</span>
+              <button class="btn start" data-link="grammar/present-simple.html">Start</button>
+            </li>
+            <li data-sub="1.2">
+              <span>→ Present Continuous</span>
+              <button class="btn start" data-link="grammar/present-continuous.html">Start</button>
+            </li>
+          </ul>
+        </details>
       </li>
 
-      <li><span class="unit">Unit 2:</span> Past tenses
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/past-simple.html">→ Past Simple</a></li>
-          <li><a href="grammar/past-continuous.html">→ Past Continuous</a></li>
-          <li><a href="grammar/past-simple-vs-continuous.html">→ Past Simple vs Continuous</a></li>
-        </ul>
+      <!-- UNIT 2 -->
+      <li data-unit="2" class="unit-block locked">
+        <details>
+          <summary>
+            <span class="chip">Unit 2:</span> <strong>Past Tenses</strong>
+          </summary>
+          <ul class="sublist">
+            <li data-sub="2.1">
+              <span>→ Past Simple</span>
+              <button class="btn start" data-link="grammar/past-simple.html" disabled>Locked</button>
+            </li>
+            <li data-sub="2.2">
+              <span>→ Past Continuous</span>
+              <button class="btn start" data-link="grammar/past-continuous.html" disabled>Locked</button>
+            </li>
+          </ul>
+        </details>
       </li>
 
-      <li><span class="unit">Unit 3:</span> Present perfect and past simple
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/present-perfect.html">→ Present Perfect</a></li>
-          <li><a href="grammar/present-perfect-vs-past-simple.html">→ Present Perfect vs Past Simple</a></li>
-          <li><a href="grammar/for-since-already-yet.html">→ For / Since / Already / Yet</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 4:</span> Past perfect
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/past-perfect.html">→ Past Perfect</a></li>
-          <li><a href="grammar/past-perfect-vs-past-simple.html">→ Past Perfect vs Past Simple</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 5:</span> Future (1)
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/future-will.html">→ Will / Won’t</a></li>
-          <li><a href="grammar/shall.html">→ Shall</a></li>
-          <li><a href="grammar/future-facts.html">→ Future Facts</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 6:</span> Future (2)
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/going-to.html">→ Going To</a></li>
-          <li><a href="grammar/present-continuous-future.html">→ Present Continuous for Future</a></li>
-          <li><a href="grammar/future-continuous-perfect.html">→ Future Continuous & Perfect</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 7:</span> Adverbs
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/adverbs-position.html">→ Adverb Position</a></li>
-          <li><a href="grammar/adjective-vs-adverb.html">→ Adjective vs Adverb</a></li>
-          <li><a href="grammar/comparative-adverbs.html">→ Comparative & Superlative Adverbs</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 8:</span> Questions
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/yes-no-questions.html">→ Yes/No Questions</a></li>
-          <li><a href="grammar/wh-questions.html">→ Wh- Questions</a></li>
-          <li><a href="grammar/question-tags.html">→ Question Tags</a></li>
-          <li><a href="grammar/indirect-questions.html">→ Indirect Questions</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 9:</span> Nouns & Articles
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/countable-uncountable.html">→ Countable / Uncountable Nouns</a></li>
-          <li><a href="grammar/articles.html">→ Articles (A / An / The)</a></li>
-          <li><a href="grammar/quantifiers.html">→ Quantifiers</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 10:</span> Modals (1)
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/can-could.html">→ Can / Could</a></li>
-          <li><a href="grammar/may-might.html">→ May / Might</a></li>
-          <li><a href="grammar/must-have-to.html">→ Must / Have to</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 11:</span> Modals (2)
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/should-ought.html">→ Should / Ought to</a></li>
-          <li><a href="grammar/mustnt-donthaveto.html">→ Mustn’t / Don’t Have to</a></li>
-          <li><a href="grammar/modals-speculation.html">→ Speculation (May / Might / Could)</a></li>
-          <li><a href="grammar/be-able-allowed.html">→ Be able to / Be allowed to</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 12:</span> Pronouns & Determiners
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/pronouns.html">→ Pronouns</a></li>
-          <li><a href="grammar/possessives.html">→ Possessives</a></li>
-          <li><a href="grammar/demonstratives.html">→ Demonstratives</a></li>
-          <li><a href="grammar/quantifiers-advanced.html">→ Quantifiers (Advanced)</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 13:</span> Passives
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/passive-basic.html">→ Basic Passive</a></li>
-          <li><a href="grammar/active-vs-passive.html">→ Active vs Passive</a></li>
-          <li><a href="grammar/by-agent.html">→ By + Agent</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 14:</span> Reported Speech
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/reported-statements.html">→ Reported Statements</a></li>
-          <li><a href="grammar/reported-questions.html">→ Reported Questions</a></li>
-          <li><a href="grammar/reported-commands.html">→ Reported Commands</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 15:</span> The Passive (advanced)
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/passive-two-objects.html">→ Passive with Two Objects</a></li>
-          <li><a href="grammar/impersonal-passives.html">→ Impersonal Passives</a></li>
-          <li><a href="grammar/passive-infinitive.html">→ Passive Infinitive</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 16:</span> Conditionals (1)
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/zero-conditional.html">→ Zero Conditional</a></li>
-          <li><a href="grammar/first-conditional.html">→ First Conditional</a></li>
-          <li><a href="grammar/if-when-unless.html">→ If / When / Unless</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 17:</span> Conditionals (2)
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/second-conditional.html">→ Second Conditional</a></li>
-          <li><a href="grammar/third-conditional.html">→ Third Conditional</a></li>
-          <li><a href="grammar/mixed-conditionals.html">→ Mixed Conditionals</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 18:</span> Infinitive & –ing
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/to-infinitive.html">→ To-infinitive</a></li>
-          <li><a href="grammar/verb-ing.html">→ Verb + -ing</a></li>
-          <li><a href="grammar/verbs-both-forms.html">→ Verbs with Both Forms</a></li>
-          <li><a href="grammar/infinitive-purpose.html">→ Infinitive of Purpose</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 20:</span> Prepositions (1)
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/prepositions-time.html">→ Prepositions of Time</a></li>
-          <li><a href="grammar/prepositions-place.html">→ Prepositions of Place</a></li>
-          <li><a href="grammar/prepositions-common.html">→ Common Prepositions</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 21:</span> Prepositions (2)
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/dependent-prepositions.html">→ Dependent Prepositions</a></li>
-          <li><a href="grammar/prepositions-after.html">→ Prepositions after Verbs / Adjectives</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 22:</span> Relative Clauses
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/defining-relative.html">→ Defining Relative Clauses</a></li>
-          <li><a href="grammar/non-defining-relative.html">→ Non-defining Relative Clauses</a></li>
-          <li><a href="grammar/omitting-relative.html">→ Omitting the Relative Pronoun</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 23:</span> Linking Words (1)
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/basic-linkers.html">→ Basic Linkers</a></li>
-          <li><a href="grammar/contrast-reason.html">→ Contrast & Reason Linkers</a></li>
-        </ul>
-      </li>
-
-      <li><span class="unit">Unit 24:</span> Linking Words (2)
-        <ul style="list-style:none; margin-left:1rem;">
-          <li><a href="grammar/in-spite-of.html">→ In spite of / Despite</a></li>
-          <li><a href="grammar/on-the-other-hand.html">→ On the Other Hand / Whereas</a></li>
-          <li><a href="grammar/sequencing-addition.html">→ Sequencing & Addition Linkers</a></li>
-        </ul>
-      </li>
+      <!-- Puedes añadir más unidades aquí -->
     </ul>
-
-    <h2>🗣️ Vocabulary Section</h2>
-    <ul>
-      <li><span class="unit">Unit 25:</span> Learning and revising vocabulary</li>
-      <li><span class="unit">Unit 26:</span> Living a healthy life</li>
-      <li><span class="unit">Unit 27:</span> Sound waves</li>
-      <li><span class="unit">Unit 28:</span> Looking back</li>
-      <li><span class="unit">Unit 29:</span> Get active!</li>
-      <li><span class="unit">Unit 30:</span> All the world’s a stage</li>
-      <li><span class="unit">Unit 31:</span> Time off</li>
-      <li><span class="unit">Unit 32:</span> Moving house</li>
-      <li><span class="unit">Unit 33:</span> Shared tastes</li>
-      <li><span class="unit">Unit 34:</span> Home territory</li>
-      <li><span class="unit">Unit 35:</span> Green planet</li>
-      <li><span class="unit">Unit 36:</span> Read all about it!</li>
-      <li><span class="unit">Unit 37:</span> Teenage style</li>
-      <li><span class="unit">Unit 38:</span> School days</li>
-      <li><span class="unit">Unit 39:</span> The world of work</li>
-      <li><span class="unit">Unit 40:</span> University life</li>
-    </ul>
-  </section>
+  </main>
 
   <footer>
-    <p>© 2025 Índice educativo - Inglés Grammar & Vocabulary</p>
+    <p>© 2025 Ruta educativa - Inglés Grammar & Vocabulary</p>
   </footer>
+
+  <script src="game.js"></script>
 </body>
 </html>

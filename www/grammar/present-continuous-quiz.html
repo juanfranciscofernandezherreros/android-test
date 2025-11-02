@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Present Continuous - Quiz</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .feedback {
+      margin-top: 0.3rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .correct { color: #64ffda; }
+    .wrong { color: #ff6b6b; }
+    .explanation {
+      font-style: italic;
+      color: #a8b2d1;
+      margin-left: 1.2rem;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Unit 1.2 – Present Continuous Quiz</h1>
+    <p>Comprueba tus conocimientos</p>
+  </header>
+
+  <main>
+    <form id="quiz" style="max-width:600px; margin:0 auto;">
+      <!-- Pregunta 1 -->
+      <div class="question">
+        <p><strong>1.</strong> She ___ TV right now.</p>
+        <label><input type="radio" name="q1" value="is watching"> is watching</label><br>
+        <label><input type="radio" name="q1" value="watches"> watches</label><br>
+        <label><input type="radio" name="q1" value="watch"> watch</label>
+        <div id="f1" class="feedback"></div>
+      </div>
+
+      <!-- Pregunta 2 -->
+      <div class="question">
+        <p><strong>2.</strong> They ___ in the garden.</p>
+        <label><input type="radio" name="q2" value="are playing"> are playing</label><br>
+        <label><input type="radio" name="q2" value="play"> play</label><br>
+        <label><input type="radio" name="q2" value="plays"> plays</label>
+        <div id="f2" class="feedback"></div>
+      </div>
+
+      <!-- Pregunta 3 -->
+      <div class="question">
+        <p><strong>3.</strong> I ___ to music at the moment.</p>
+        <label><input type="radio" name="q3" value="am listening"> am listening</label><br>
+        <label><input type="radio" name="q3" value="listen"> listen</label><br>
+        <label><input type="radio" name="q3" value="is listening"> is listening</label>
+        <div id="f3" class="feedback"></div>
+      </div>
+
+      <div style="text-align:center; margin-top:1.5rem;">
+        <button type="submit" class="btn">Enviar respuestas ✅</button>
+      </div>
+    </form>
+
+    <p id="result" style="text-align:center; margin-top:1.5rem; font-size:1.1rem;"></p>
+
+    <div style="text-align:center; margin-top:2rem;">
+      <button class="btn secondary" onclick="window.location.href='present-continuous.html'">
+        ⬅️ Volver a teoría
+      </button>
+      <button class="btn" onclick="window.location.href='../index.html'">
+        🏠 Volver al índice
+      </button>
+    </div>
+  </main>
+
+  <script>
+    const quiz = document.getElementById('quiz');
+    const result = document.getElementById('result');
+    const f1 = document.getElementById('f1');
+    const f2 = document.getElementById('f2');
+    const f3 = document.getElementById('f3');
+
+    function clearFeedback() {
+      f1.innerHTML = '';
+      f2.innerHTML = '';
+      f3.innerHTML = '';
+    }
+
+    quiz.addEventListener('submit', e => {
+      e.preventDefault();
+      clearFeedback();
+      let score = 0;
+      const q1 = quiz.q1.value;
+      const q2 = quiz.q2.value;
+      const q3 = quiz.q3.value;
+
+      // P1
+      if (q1 === "is watching") {
+        score++;
+        f1.innerHTML = `
+          <span class="correct">✔ Correcto.</span>
+          <span class="explanation">
+            Usamos <b>is watching</b> porque el sujeto es <b>she</b> (3ª persona singular) y el verbo principal lleva <b>-ing</b> en Present Continuous.
+            <br>❌ <b>watches</b> es Present Simple.<br>❌ <b>watch</b> falta el verbo auxiliar <b>is</b>.
+          </span>`;
+      }
+
+      // P2
+      if (q2 === "are playing") {
+        score++;
+        f2.innerHTML = `
+          <span class="correct">✔ Correcto.</span>
+          <span class="explanation">
+            Con <b>they</b> usamos el auxiliar <b>are</b> + verbo + <b>-ing</b>: <i>They are playing in the garden.</i><br>
+            ❌ <b>play</b> y <b>plays</b> son formas del Present Simple.
+          </span>`;
+      }
+
+      // P3
+      if (q3 === "am listening") {
+        score++;
+        f3.innerHTML = `
+          <span class="correct">✔ Correcto.</span>
+          <span class="explanation">
+            Con <b>I</b> usamos <b>am</b> como auxiliar: <i>I am listening to music.</i><br>
+            ❌ <b>listen</b> no lleva auxiliar.<br>❌ <b>is listening</b> es incorrecto porque <b>is</b> se usa con <i>he/she/it</i>.
+          </span>`;
+      }
+
+      // Resultado final
+      if (score === 3) {
+        result.innerHTML = "🎉 ¡Perfecto! Has completado esta unidad.";
+        result.style.color = "#64ffda";
+
+        // Guardar progreso en localStorage
+        let completed = JSON.parse(localStorage.getItem("completedSubs")) || [];
+        if (!completed.includes("1.2")) { // 1.2 = Present Continuous
+          completed.push("1.2");
+          localStorage.setItem("completedSubs", JSON.stringify(completed));
+        }
+      } else {
+        result.innerHTML = "🙂 Las explicaciones solo aparecen cuando aciertas. ¡Sigue practicando!";
+        result.style.color = "#f7c948";
+      }
+    });
+  </script>
+</body>
+</html>

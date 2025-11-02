@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Present Simple - Quiz</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .feedback {
+      margin-top: 0.3rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .correct { color: #64ffda; }
+    .wrong { color: #ff6b6b; }
+    .explanation {
+      font-style: italic;
+      color: #a8b2d1;
+      margin-left: 1.2rem;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Unit 1 – Present Simple Quiz</h1>
+    <p>Comprueba tus conocimientos</p>
+  </header>
+
+  <main>
+    <form id="quiz" style="max-width:600px; margin:0 auto;">
+      <!-- Pregunta 1 -->
+      <div class="question">
+        <p><strong>1.</strong> She ___ to school every day.</p>
+        <label><input type="radio" name="q1" value="goes"> goes</label><br>
+        <label><input type="radio" name="q1" value="go"> go</label><br>
+        <label><input type="radio" name="q1" value="going"> going</label>
+        <div id="f1" class="feedback"></div>
+      </div>
+
+      <!-- Pregunta 2 -->
+      <div class="question">
+        <p><strong>2.</strong> I ___ like coffee.</p>
+        <label><input type="radio" name="q2" value="doesn't"> doesn't</label><br>
+        <label><input type="radio" name="q2" value="don't"> don't</label><br>
+        <label><input type="radio" name="q2" value="am not"> am not</label>
+        <div id="f2" class="feedback"></div>
+      </div>
+
+      <div style="text-align:center; margin-top:1.5rem;">
+        <button type="submit" class="btn">Enviar respuestas ✅</button>
+      </div>
+    </form>
+
+    <p id="result" style="text-align:center; margin-top:1.5rem; font-size:1.1rem;"></p>
+
+    <div style="text-align:center; margin-top:2rem;">
+      <button class="btn secondary" onclick="window.location.href='present-simple.html'">
+        ⬅️ Volver a teoría
+      </button>
+      <button class="btn" onclick="window.location.href='../index.html'">
+        🏠 Volver al índice
+      </button>
+    </div>
+  </main>
+
+<script>
+  const quiz = document.getElementById('quiz');
+  const result = document.getElementById('result');
+  const f1 = document.getElementById('f1');
+  const f2 = document.getElementById('f2');
+
+  function clearFeedback() {
+    f1.innerHTML = '';
+    f2.innerHTML = '';
+  }
+
+  quiz.addEventListener('submit', e => {
+    e.preventDefault();
+    clearFeedback();
+
+    const q1 = quiz.q1.value;
+    const q2 = quiz.q2.value;
+    let score = 0;
+
+    // Pregunta 1
+    if (q1 === 'goes') {
+      score++;
+      f1.innerHTML = `
+        <span class="correct">✔ Correcto.</span>
+        <span class="explanation">
+          Usamos <b>goes</b> porque el sujeto es <b>she</b> (3ª persona singular).
+          En Present Simple añadimos <b>-s</b> a los verbos con <i>he/she/it</i>.<br>
+          ❌ <b>go</b> falta la -s.<br>
+          ❌ <b>going</b> es -ing, usado en Present Continuous.
+        </span>`;
+    }
+
+    // Pregunta 2
+    if (q2 === "don't") {
+      score++;
+      f2.innerHTML = `
+        <span class="correct">✔ Correcto.</span>
+        <span class="explanation">
+          Con <b>I/you/we/they</b> usamos <b>don't</b> para la forma negativa.<br>
+          ❌ <b>doesn't</b> se usa solo con <i>he/she/it</i>.<br>
+          ❌ <b>am not</b> se usa con el verbo <i>to be</i>.
+        </span>`;
+    }
+
+    // Resultado global
+    if (score === 2) {
+      result.innerHTML = "🎉 ¡Excelente! Has completado esta unidad.";
+      result.style.color = "#64ffda";
+
+      // 🔹 Guardar progreso correcto para la ruta de aprendizaje
+      let completed = JSON.parse(localStorage.getItem("completedSubs")) || [];
+      if (!completed.includes("1.1")) { // 1.1 = Present Simple
+        completed.push("1.1");
+        localStorage.setItem("completedSubs", JSON.stringify(completed));
+      }
+    } else {
+      result.innerHTML = "🙂 Las explicaciones aparecen solo cuando aciertas. ¡Sigue practicando!";
+      result.style.color = "#f7c948";
+    }
+  });
+</script>
+
+
+</body>
+</html>
